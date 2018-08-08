@@ -46,6 +46,24 @@ class CardController extends Controller
         ]);
     }
 
+
+    /**
+     * Lists all Cards from ElasticSearch
+     * @return mixed
+     */
+    public function actionElastic()
+    {
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => CardElastic::find()->addOrderBy('id DESC')->addOptions(['size' => 6]),
+        ]);
+
+        return $this->render('index_elastic', [
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+
     /**
      * Displays a single Card model.
      * @param integer $id

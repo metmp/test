@@ -21,6 +21,7 @@ class CardElastic extends \yii\elasticsearch\ActiveRecord
     public function attributes()
     {
         return [
+            '_id',
             'id',
             'title',
             'description',

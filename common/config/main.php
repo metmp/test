@@ -19,15 +19,10 @@ return [
             ],
         ],
 
-
-
         'elasticsearch' => [
             'class' => 'yii\elasticsearch\Connection',
-            //'auth' => ['username' => 'elastic2@yopmail.com', 'password' => 'elastic2@yopmail.com'],
             'nodes' => [
-                [
-                    'http_address' => '127.0.0.1:9200',
-                ],
+                ['http_address' => '127.0.0.1:9200'],
             ],
         ],
 
