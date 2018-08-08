@@ -70,8 +70,18 @@ class CardController extends Controller
     public function actionCreate()
     {
         $model = new Card();
+        $elasticModel = new CardElastic();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+            $elasticModel->id = $model->id;
+            $elasticModel->title = $model->title;
+            $elasticModel->description = $model->description;
+            $elasticModel->picture = $model->picture;
+            $elasticModel->view = intval($model->view);
+            $elasticModel->save();
+
+
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -90,8 +100,16 @@ class CardController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $elasticModel = CardElastic::find()->where(['id' => $id])->one();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+            $elasticModel->title = $model->title;
+            $elasticModel->description = $model->description;
+            $elasticModel->picture = $model->picture;
+            $elasticModel->view = intval($model->view);
+            $elasticModel->save();
+
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

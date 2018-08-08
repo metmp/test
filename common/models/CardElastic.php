@@ -7,6 +7,7 @@ use Yii;
 
 class CardElastic extends \yii\elasticsearch\ActiveRecord
 {
+
     public static function index()
     {
         return 'card_index';
@@ -20,11 +21,11 @@ class CardElastic extends \yii\elasticsearch\ActiveRecord
     public function attributes()
     {
         return [
-            'id' => 'ID',
-            'title' => 'Title',
-            'description' => 'Description',
-            'picture' => 'Picture',
-            'view' => 'View',
+            'id',
+            'title',
+            'description',
+            'picture',
+            'view',
         ];
     }
 
